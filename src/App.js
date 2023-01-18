@@ -8,7 +8,9 @@ import moviesFromJson from "./data/movies.json"
 function App() {
   // use useState to update
   const [moviesArr, setMovies] = useState(moviesFromJson);
-
+  const [title, setTitle]= useState("");
+  const [rating, setRating]= useState("");
+  const [imgURL, setImgURL]= useState("")
 
   // here moviesFromJson is initial value we need to update(remove the element from original array to have the delete effect)
   const deletMovie = (idOfTheMovieToDelete) => {
@@ -40,16 +42,61 @@ function App() {
   }
 
   const handleSubmit = (event) => {
-    //prevent the user submit,the page auto refresh
+    //prevent the page auto refresh once the user submit,
     event.preventDefault();
+    const newMovie = {
+      "title" : title,
+      "rating": rating,
+      "imgURL":imgURL
+      //left side should be the same like the name in form
+      //the right side should be the same like in useState()
+    }
 
+    setMovies((prevListOfMovies) => {
+      const newList = [newMovie, ...prevListOfMovies]
+      return newList;
+    });
+    //clear form
+    setTitle("");
+    setRating("");
+    setImgURL("")
   }
 
   return (
     <div className="App">
       <Header moviesArr={moviesArr} />
+
       <form onSubmit={handleSubmit}>
-        <input type="text" name="title" placeholder="Enter the title" />
+        <label> Title
+          <input
+            type="text"
+            name="title"
+            required={true}
+            placeholder="Enter the title"
+            value={title}
+            onChange={(event) => { setTitle(event.target.value) }}
+          />
+        </label>
+        <label> Rating
+          <input
+            type="number"
+            name="rating"
+            required={true}
+            placeholder="5"
+            value={rating}
+            onChange={(event) => { setRating(event.target.value) }}
+          />
+        </label>
+        <label> ImgURL
+          <input
+            type="url"
+            name="imgURL"
+            // required="false"
+            placeholder="image url" 
+            value={imgURL}
+            onChange={(event) => { setImgURL(event.target.value) }}
+          />
+        </label>
         <button>Create</button>
       </form>
 

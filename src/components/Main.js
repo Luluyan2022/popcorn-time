@@ -9,10 +9,10 @@ function Main(props){
                 <button onClick={props.sortRatingAscend}>Rating ascending</button>
                 <button onClick={props.sortRatingDescend}>Rating Descending</button>
                
-                {props.moviesArr.map((movieDetails) => {
+                {props.moviesArr.map((movieDetails,index) => {
                     return (
 
-                        <Movie key={movieDetails.id} movie={movieDetails} deletMovie={props.deletMovie} />
+                        <Movie key={index} movie={movieDetails} deletMovie={props.deletMovie} />
                     );
                 })}
             </div>       

@@ -10,7 +10,7 @@ function Header(props) {
   }
   return (
     <div className="Header">
-      <h1> {titleMessage}</h1>
+      {titleMessage}
     </div>
   )
 }
