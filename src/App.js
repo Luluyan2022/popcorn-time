@@ -13,9 +13,9 @@ function App() {
   const [imgURL, setImgURL]= useState("")
 
   // here moviesFromJson is initial value we need to update(remove the element from original array to have the delete effect)
-  const deletMovie = (idOfTheMovieToDelete) => {
+  const deletMovie = (movieTitle) => {
     const newListOfMovies = moviesArr.filter((movie) => {
-      return movie.id !== idOfTheMovieToDelete;
+      return movie.title !== movieTitle;
     });
     setMovies(newListOfMovies)
     // pass the updated value to setMovies to update

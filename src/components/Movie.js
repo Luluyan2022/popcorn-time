@@ -20,7 +20,7 @@ export default function Movie(props){
 
           <p>Year: {props.movie.year}</p>
           {/* <p>Genres: {props.movie.genres.map((genre) => <li>{genre}</li>)}</p> */}
-          <button onClick={() => props.deletMovie(props.movie.id)}>Delete this movie</button>
+          <button onClick={() => props.deletMovie(props.movie.title)}>Delete this movie</button>
           {/* we need to put the method in an anonymous arrow function to prevent the function auto excuted right now  */}
       </div>
   )
